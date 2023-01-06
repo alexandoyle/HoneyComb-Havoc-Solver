@@ -20,7 +20,6 @@ public class Sequence
 	}
 
 	//Print Contents of Sequence
-
 	public void print()
 	{
 		Boolean bool;
