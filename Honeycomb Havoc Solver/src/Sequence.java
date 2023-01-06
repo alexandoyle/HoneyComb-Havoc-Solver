@@ -5,6 +5,7 @@ public class Sequence
 {
 	List<Boolean> list = new ArrayList<Boolean>();
 	
+	//Create Sequence Object
 	public Sequence(ArrayList<Boolean> myList)
 	{
 		list = myList;
@@ -17,7 +18,9 @@ public class Sequence
 		addFruit(num);
 		addHoneycomb();
 	}
-	
+
+	//Print Contents of Sequence
+
 	public void print()
 	{
 		Boolean bool;

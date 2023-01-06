@@ -21,12 +21,4 @@ public class Main {
 		mySeq.print();
 
 	}
-//Test commit from GitHub
-	//Test commit to Alex branch
-	//Another Test Commit from master branch
-	// Michael test
-	//Alex Test
-	//Commit
-	
-	
 }
