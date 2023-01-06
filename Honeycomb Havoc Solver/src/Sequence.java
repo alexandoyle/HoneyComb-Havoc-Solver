@@ -4,12 +4,18 @@ import java.util.List;
 public class Sequence 
 {
 	List<Boolean> list = new ArrayList<Boolean>();
-	int length;
 	
 	public Sequence(ArrayList<Boolean> myList)
 	{
-		length = myList.size();
 		list = myList;
+	}
+	
+	public Sequence(int num)
+	{
+		list = new ArrayList<Boolean>();
+		
+		addFruit(num);
+		addHoneycomb();
 	}
 	
 	public void print()
@@ -29,5 +35,26 @@ public class Sequence
 			System.out.print("Fruit.\n");
 		else
 			System.out.print("Honeycomb.\n");
+	}
+	
+	public void addFruit(int num)
+	{
+		for(int i = 0; i < num; i++)
+		{
+			list.add(false);
+		}
+	}
+	
+	public void addHoneycomb()
+	{
+		list.add(true);
+	}
+	
+	public boolean remove()
+	{
+		boolean bool = list.get(0);
+		list.remove(0);
+		
+		return bool;
 	}
 }
