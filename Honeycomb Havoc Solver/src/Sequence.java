@@ -20,8 +20,9 @@ public class Sequence
 		addHoneycomb();
 	}
 
-	// Prints formatted contents of sequence
-	public void print() 
+
+	//Print Contents of Sequence
+	public void print()
 	{
 		Boolean bool;
 		for(int i = 0; i < list.size()-1; i++)
