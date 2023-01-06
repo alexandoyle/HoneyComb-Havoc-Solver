@@ -6,12 +6,14 @@ public class Sequence
 	List<Boolean> list = new ArrayList<Boolean>();
 	int length;
 	
+	//Create Sequence Object
 	public Sequence(ArrayList<Boolean> myList)
 	{
 		length = myList.size();
 		list = myList;
 	}
 	
+	//Print Contents of Sequence
 	public void print()
 	{
 		Boolean bool;
