@@ -6,7 +6,7 @@
  * @author alexe
  *
  */
-public class main {
+public class Main {
 
 	/**
 	 * @param args
@@ -21,4 +21,6 @@ public class main {
 	// Michael test
 	//Alex Test
 	//Commit
+	
+	
 }
