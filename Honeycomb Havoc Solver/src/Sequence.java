@@ -89,4 +89,14 @@ public class Sequence
 		}
 		else return false;
 	}
+	
+	// Returns how many fruits remain before the next honeycomb
+	public int fruitsLeft()
+	{
+		int fruits = 0;
+		int i = 0;
+		while(list.get(i) != true)
+			fruits++;
+		return fruits;
+	}
 }
