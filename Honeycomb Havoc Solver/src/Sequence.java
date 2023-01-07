@@ -28,21 +28,25 @@ public class Sequence
 	//Print Contents of Sequence
 	public void print()
 	{
-		Boolean bool;
-		for(int i = 0; i < list.size()-1; i++)
+		if(list.size()>0)
 		{
-			bool = list.get(i);
+			Boolean bool;
+			for(int i = 0; i < list.size()-1; i++)
+			{
+				bool = list.get(i);
+				if (!bool)
+					System.out.print("Fruit, ");
+				else
+					System.out.print("Honeycomb, ");
+			}
+			
+			bool = list.get(list.size()-1);
 			if (!bool)
-				System.out.print("Fruit, ");
+				System.out.print("Fruit.\n");
 			else
-				System.out.print("Honeycomb, ");
+				System.out.print("Honeycomb.\n");
 		}
-		
-		bool = list.get(list.size()-1);
-		if (!bool)
-			System.out.print("Fruit.\n");
-		else
-			System.out.print("Honeycomb.\n");
+		else System.out.print("The sequence is empty.\n");		
 	}
 	
 	// Adds n fruits
