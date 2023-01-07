@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
 
 	//Global Variables
-	static int numFruits  = 9;
+	static int numFruits  = 11;
 	static int numPlayers = 3;
 
 	static int[]    threePlayerBestMove           = new int[] 	 { 0, 	1, 		1, 		2, 		2, 		1, 		1, 		2, 		2, 		0, 		0,		0};
@@ -83,7 +83,7 @@ public class Main {
 				{
 					//Only do this on Player 1's first turn
 					if (numTurns == 0) {
-						if(!p1move || mySeq.getSize() <= 2)  {
+						if(!p1move)  {
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn, 1);
 							mySeq.print();
