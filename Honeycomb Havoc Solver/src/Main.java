@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -27,19 +28,39 @@ public class Main {
 		mySeq.print();
 
 
-		//3 player game
-		int playersTurn = 1;
+	
+		int playersTurn = 2;
 
-		//Simulate Game
+		//Boolean List to keep track of wins
+		//True = Win, False = Loss
+		List<Boolean> WinsVsLosses = new ArrayList<Boolean>();
+		
+		//*****************************//
+		//        Simulate Game
+		//*****************************//
 		boolean youDied = false;
-
 		while (!youDied) {
 			youDied = mySeq.take1();
 			printMove(youDied, playersTurn);
-			mySeq.print();
-			playersTurn = nextTurn(playersTurn);
+			
+			//only change turns if no-one has died yet
+			if (!youDied) {
+				mySeq.print();
+				playersTurn = nextTurn(playersTurn);
+			}
+		}
+		
+		//if player 1 dies in this scenario, add it to the statistics as a death
+		if (playersTurn == 1) {
+			WinsVsLosses.add(false);
+		}
+		else {
+			WinsVsLosses.add(true);
 		}
 
+		double winRate = winPercentageCalculator(WinsVsLosses);
+		System.out.println("Player 1's winrate is: " + winRate);
+		
 	}
 
 	public static int nextTurn(int playersTurn) {
@@ -80,7 +101,32 @@ public class Main {
 		else
 		{
 			System.out.println("Player: " + playersTurn + " took the honeycomb and died.");
-			System.exit(0);
 		}
+	}
+	
+	public static double winPercentageCalculator (List<Boolean> winsVsLosses) {
+		
+		int counter = 0;
+		double a = 0;
+		double winRate;
+		boolean x;
+		
+		while (winsVsLosses.size() > counter) {
+			x = winsVsLosses.get(counter);
+			
+			if (x) {
+				a++;
+			}		
+				counter++;
+		}
+		System.out.println();
+		System.out.println("a: " + a);
+		System.out.println("Counter: " + a);
+		System.out.println("numGamesSimulated: " + a);
+		double numGamesSimulated = counter;
+		
+		//calculate the winRate
+		winRate = a / numGamesSimulated;
+		return winRate;
 	}
 }
