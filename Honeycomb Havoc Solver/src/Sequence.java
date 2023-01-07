@@ -5,9 +5,6 @@ public class Sequence
 {
 	List<Boolean> list = new ArrayList<Boolean>(); // Stores the objects; false represents a fruit, true represents a honeycomb
 	
-	int[] threePlayerBestMove = new int[] 			{ 0, 	1, 		1, 		2, 		2, 		1, 		1, 		2, 		2, 		0, 		0,		0};
-	int[] threePlayerBestMovePercentage = new int[] { 0,  100, 	  100, 	  100, 	   50, 	   75, 	  100, 	  100, 	  100, 		0, 		0, 		0};
-	
 	
 	// Create sequence with already populated arrayList
 	public Sequence(ArrayList<Boolean> myList) 
@@ -102,11 +99,16 @@ public class Sequence
 	public int fruitsLeft()
 	{
 		int fruits = 0;
-		int i = 0;
-		while(list.get(i) != true)
-			fruits++;
+		fruits = list.size() -1;
 		return fruits;
 	}
 	
+	public int getSize() {
+		if (list.size() > 0) {
+			return list.size();
+		}
+		else
+		return 0;
+	}
 	
 }
