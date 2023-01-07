@@ -1,13 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
- */
-
-/**
- * @author alexe
- *
+/*
+ * Created by Alex Estevan & Michael Goolsbey
+ * This program simulates games of Honeycomb Havoc
+ * to determine the best possible move in any scenario
  */
 public class Main {
 
