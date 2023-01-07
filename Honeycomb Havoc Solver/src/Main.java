@@ -30,7 +30,8 @@ public class Main {
 
 		//Boolean List to keep track of wins
 		//True = Win, False = Loss
-		List<Boolean> WinsVsLosses = new ArrayList<Boolean>();
+		List<Boolean> oneFruitWinsVsLosses  = new ArrayList<Boolean>();
+		List<Boolean> twoFruitsWinsVsLosses = new ArrayList<Boolean>();
 		
 		//*****************************//
 		//        Simulate Game
@@ -38,8 +39,12 @@ public class Main {
 		boolean youDied = false;
 		
 		int simulation = 0;
+		
+		//if pmove = false, that player takes 1 fruit
+		//if pmove = true, that player takes 2 fruits
 		boolean p1move = false, p2move = false, p3move = false;
 		
+		//Simulate through 8 different game variations
 		while(simulation < 8)
 		{
 			int display = simulation + 1;
@@ -61,8 +66,9 @@ public class Main {
 			Sequence mySeq = new Sequence(numFruits);
 			mySeq.print();
 			
+			//Simulate a single game until any player dies
 			while (!youDied) {
-				//System.out.println("Player's turn: "+ playersTurn);
+				
 				switch (playersTurn)
 				{
 					case 1:
@@ -72,7 +78,6 @@ public class Main {
 							printMove(youDied, playersTurn, 1);
 							mySeq.print();
 						}
-							
 						else {
 							youDied = mySeq.take2();
 							printMove(youDied, playersTurn, 2);
@@ -80,9 +85,9 @@ public class Main {
 						}
 						break;
 					}
+					
 					case 2:
 					{
-
 						if(!p2move){
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn, 1);
@@ -95,18 +100,15 @@ public class Main {
 							mySeq.print();
 						}
 						break;
-
-
 					}
+					
 					case 3:
 					{
-
 						if(!p3move){
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn, 1);
 							mySeq.print();
-						}
-							
+						}	
 						else {
 							youDied = mySeq.take2();
 							printMove(youDied, playersTurn, 2);
@@ -116,7 +118,6 @@ public class Main {
 					}	
 				}
 				
-				
 				//only change turns if no-one has died yet
 				if (!youDied) {
 					playersTurn = nextTurn(playersTurn);
@@ -124,17 +125,31 @@ public class Main {
 			}
 			
 			//if player 1 dies in this scenario, add it to the statistics as a death
+			if (!p1move) {
 			if (playersTurn == 1) 
 			{
-				WinsVsLosses.add(false);
+				oneFruitWinsVsLosses.add(false);
 			}
 			else 
 			{
-				WinsVsLosses.add(true);
+				oneFruitWinsVsLosses.add(true);
 			}
+			}
+			else {
+				if (playersTurn == 1) 
+				{
+					twoFruitsWinsVsLosses.add(false);
+				}
+				else 
+				{
+					twoFruitsWinsVsLosses.add(true);
+				}
+				}
 
-			double winRate = winPercentageCalculator(WinsVsLosses);
-			System.out.println("Player 1's winrate is: " + winRate);
+			double oneFruitWinRate = winPercentageCalculator(oneFruitWinsVsLosses);
+			double twoFruitsWinRate = winPercentageCalculator(twoFruitsWinsVsLosses);
+			System.out.println("Player 1's 1-Fruit winrate is: " + oneFruitWinRate);
+			System.out.println("Player 1's 2-Fruit winrate is: " + twoFruitsWinRate);
 			System.out.println();
 			
 			if(!p1move)
