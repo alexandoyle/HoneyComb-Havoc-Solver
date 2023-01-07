@@ -42,34 +42,34 @@ public class Main {
 		
 		while(simulation < 8)
 		{
+			
+			
+			
 			Sequence mySeq = new Sequence(numFruits);
 			mySeq.print();
 			
 			while (!youDied) {
+				System.out.println("Player's turn: "+ playersTurn);
 				switch (playersTurn)
 				{
 					case 1:
 					{
-						if(!p1move)
-							youDied = mySeq.take1();
-						else 
-							youDied = mySeq.take2();
+						if(!p1move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
 					}
 					case 2:
 					{
-						if(!p2move)
-							youDied = mySeq.take1();
-						else 
-							youDied = mySeq.take2();
+						if(!p2move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
 					}
 					case 3:
 					{
-						if(!p3move)
-							youDied = mySeq.take1();
-						else 
-							youDied = mySeq.take2();
+						if(!p3move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
 					}
-					
 					
 				}
 				mySeq.print();
@@ -117,6 +117,7 @@ public class Main {
 				}
 			}
 			simulation++;
+			youDied = false;
 		}
 		
 		
