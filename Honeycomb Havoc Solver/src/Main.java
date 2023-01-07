@@ -42,14 +42,19 @@ public class Main {
 		
 		while(simulation < 8)
 		{
+			
+			
+			
 			Sequence mySeq = new Sequence(numFruits);
 			mySeq.print();
 			
 			while (!youDied) {
+				System.out.println("Player's turn: "+ playersTurn);
 				switch (playersTurn)
 				{
 					case 1:
 					{
+
 						if(!p1move)  {
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn);
@@ -92,8 +97,8 @@ public class Main {
 							mySeq.print();
 						}
 							
+
 					}
-					
 					
 				}
 				mySeq.print();
@@ -141,6 +146,7 @@ public class Main {
 				}
 			}
 			simulation++;
+			youDied = false;
 		}
 		
 		
