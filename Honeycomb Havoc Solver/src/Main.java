@@ -50,31 +50,55 @@ public class Main {
 				{
 					case 1:
 					{
-						if(!p1move)
+						if(!p1move)  {
 							youDied = mySeq.take1();
-						else 
+							printMove(youDied, playersTurn);
+							mySeq.print();
+						}
+							
+						else {
 							youDied = mySeq.take2();
+							printMove(youDied, playersTurn);
+							mySeq.print();
+						}
+							
 					}
 					case 2:
 					{
-						if(!p2move)
+						if(!p2move){
 							youDied = mySeq.take1();
-						else 
+							printMove(youDied, playersTurn);
+							mySeq.print();
+						}
+							
+						else {
 							youDied = mySeq.take2();
+							printMove(youDied, playersTurn);
+							mySeq.print();
+						}
+							
 					}
 					case 3:
 					{
-						if(!p3move)
+						if(!p3move){
 							youDied = mySeq.take1();
-						else 
+							printMove(youDied, playersTurn);
+							mySeq.print();
+						}
+							
+						else {
 							youDied = mySeq.take2();
+							printMove(youDied, playersTurn);
+							mySeq.print();
+						}
+							
 					}
 					
 					
 				}
 				mySeq.print();
 				
-				printMove(youDied, playersTurn);
+				
 				
 				//only change turns if no-one has died yet
 				if (!youDied) {
