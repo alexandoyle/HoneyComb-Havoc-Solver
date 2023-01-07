@@ -54,7 +54,11 @@ public class Main {
 				{
 					case 1:
 					{
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of https://github.com/alexandoyle/Honeycomb-Havoc-Solver.git
 						if(!p1move)  {
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn);
@@ -67,9 +71,21 @@ public class Main {
 							mySeq.print();
 						}
 							
+<<<<<<< HEAD
+
+						if(!p1move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
+
+=======
+>>>>>>> branch 'master' of https://github.com/alexandoyle/Honeycomb-Havoc-Solver.git
 					}
 					case 2:
 					{
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/alexandoyle/Honeycomb-Havoc-Solver.git
 						if(!p2move){
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn);
@@ -82,9 +98,21 @@ public class Main {
 							mySeq.print();
 						}
 							
+<<<<<<< HEAD
+
+						if(!p2move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
+
+=======
+>>>>>>> branch 'master' of https://github.com/alexandoyle/Honeycomb-Havoc-Solver.git
 					}
 					case 3:
 					{
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/alexandoyle/Honeycomb-Havoc-Solver.git
 						if(!p3move){
 							youDied = mySeq.take1();
 							printMove(youDied, playersTurn);
@@ -97,7 +125,15 @@ public class Main {
 							mySeq.print();
 						}
 							
+<<<<<<< HEAD
 
+						if(!p3move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
+
+=======
+
+>>>>>>> branch 'master' of https://github.com/alexandoyle/Honeycomb-Havoc-Solver.git
 					}
 					
 				}
