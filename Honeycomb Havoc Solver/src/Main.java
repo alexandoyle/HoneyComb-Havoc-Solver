@@ -42,58 +42,58 @@ public class Main {
 		
 		while(simulation < 8)
 		{
+			int display = simulation + 1;
+			int p1moveINT, p2moveINT, p3moveINT;
 			
+			if (!p1move) p1moveINT = 1;
+			else p1moveINT = 2;
+			if (!p2move) p2moveINT = 1;
+			else p2moveINT = 2;
+			if (!p3move) p3moveINT = 1;
+			else p3moveINT = 2;
 			
+			System.out.println("*************************************");
+			System.out.println("Simulation #" + display + "   p1: " + p1moveINT + "  |  p2: " + p2moveINT + "  |  p3: " + p3moveINT);
+			System.out.println("*************************************");
+			System.out.println();
 			
+			//Declare new sequence of fruits at the beginning of every simulation
 			Sequence mySeq = new Sequence(numFruits);
 			mySeq.print();
 			
 			while (!youDied) {
-				System.out.println("Player's turn: "+ playersTurn);
+				//System.out.println("Player's turn: "+ playersTurn);
 				switch (playersTurn)
 				{
 					case 1:
 					{
-
-
 						if(!p1move)  {
 							youDied = mySeq.take1();
-							printMove(youDied, playersTurn);
+							printMove(youDied, playersTurn, 1);
 							mySeq.print();
 						}
 							
 						else {
 							youDied = mySeq.take2();
-							printMove(youDied, playersTurn);
+							printMove(youDied, playersTurn, 2);
 							mySeq.print();
 						}
-
-
-						if(!p1move) youDied = mySeq.take1();
-						else youDied = mySeq.take2();
 						break;
-
-
 					}
 					case 2:
 					{
 
 						if(!p2move){
 							youDied = mySeq.take1();
-							printMove(youDied, playersTurn);
+							printMove(youDied, playersTurn, 1);
 							mySeq.print();
 						}
 							
 						else {
 							youDied = mySeq.take2();
-							printMove(youDied, playersTurn);
+							printMove(youDied, playersTurn, 2);
 							mySeq.print();
 						}
-							
-
-
-						if(!p2move) youDied = mySeq.take1();
-						else youDied = mySeq.take2();
 						break;
 
 
@@ -103,33 +103,22 @@ public class Main {
 
 						if(!p3move){
 							youDied = mySeq.take1();
-							printMove(youDied, playersTurn);
+							printMove(youDied, playersTurn, 1);
 							mySeq.print();
 						}
 							
 						else {
 							youDied = mySeq.take2();
-							printMove(youDied, playersTurn);
+							printMove(youDied, playersTurn, 2);
 							mySeq.print();
 						}
-							
-
-
-						if(!p3move) youDied = mySeq.take1();
-						else youDied = mySeq.take2();
 						break;
-
-
-					}
-					
+					}	
 				}
-				mySeq.print();
-				
 				
 				
 				//only change turns if no-one has died yet
 				if (!youDied) {
-					mySeq.print();
 					playersTurn = nextTurn(playersTurn);
 				}
 			}
@@ -146,6 +135,7 @@ public class Main {
 
 			double winRate = winPercentageCalculator(WinsVsLosses);
 			System.out.println("Player 1's winrate is: " + winRate);
+			System.out.println();
 			
 			if(!p1move)
 			{
@@ -206,10 +196,16 @@ public class Main {
 		return 0;
 	}
 
-	public static void printMove(boolean youDied, int playersTurn) {
+	public static void printMove(boolean youDied, int playersTurn, int numFruits) {
 		if (!youDied) {
-			System.out.println("Player: " + playersTurn + " took the fruit");
+			if (numFruits == 1) {
+			System.out.println("Player: " + playersTurn + " took 1 fruit");
 			System.out.println();
+			}
+			if (numFruits == 2) {
+				System.out.println("Player: " + playersTurn + " took 2 fruits");
+				System.out.println();
+				}
 		}
 		else
 		{
@@ -234,10 +230,10 @@ public class Main {
 		}
 		System.out.println();
 		System.out.println("a: " + a);
-		System.out.println("Counter: " + a);
-		System.out.println("numGamesSimulated: " + a);
-		double numGamesSimulated = counter;
+		System.out.println("Counter: " + counter);
 		
+		double numGamesSimulated = counter;
+		System.out.println("numGamesSimulated: " + numGamesSimulated);
 		//calculate the winRate
 		winRate = a / numGamesSimulated;
 		return winRate;
