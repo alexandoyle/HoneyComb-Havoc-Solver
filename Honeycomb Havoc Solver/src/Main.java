@@ -21,12 +21,12 @@ public class Main {
 
 
 
-		Sequence mySeq = new Sequence(numFruits);
-		mySeq.print();
+		// Sequence mySeq = new Sequence(numFruits);
+		// mySeq.print();
 
 
 	
-		int playersTurn = 2;
+		int playersTurn = 1;
 
 		//Boolean List to keep track of wins
 		//True = Win, False = Loss
@@ -36,27 +36,92 @@ public class Main {
 		//        Simulate Game
 		//*****************************//
 		boolean youDied = false;
-		while (!youDied) {
-			youDied = mySeq.take1();
-			printMove(youDied, playersTurn);
+		
+		int simulation = 0;
+		boolean p1move = false, p2move = false, p3move = false;
+		
+		while(simulation < 8)
+		{
 			
-			//only change turns if no-one has died yet
-			if (!youDied) {
+			
+			
+			Sequence mySeq = new Sequence(numFruits);
+			mySeq.print();
+			
+			while (!youDied) {
+				System.out.println("Player's turn: "+ playersTurn);
+				switch (playersTurn)
+				{
+					case 1:
+					{
+						if(!p1move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
+					}
+					case 2:
+					{
+						if(!p2move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
+					}
+					case 3:
+					{
+						if(!p3move) youDied = mySeq.take1();
+						else youDied = mySeq.take2();
+						break;
+					}
+					
+				}
 				mySeq.print();
-				playersTurn = nextTurn(playersTurn);
+				
+				printMove(youDied, playersTurn);
+				
+				//only change turns if no-one has died yet
+				if (!youDied) {
+					mySeq.print();
+					playersTurn = nextTurn(playersTurn);
+				}
 			}
+			
+			//if player 1 dies in this scenario, add it to the statistics as a death
+			if (playersTurn == 1) 
+			{
+				WinsVsLosses.add(false);
+			}
+			else 
+			{
+				WinsVsLosses.add(true);
+			}
+
+			double winRate = winPercentageCalculator(WinsVsLosses);
+			System.out.println("Player 1's winrate is: " + winRate);
+			
+			if(!p1move)
+			{
+				p1move = true;
+			}
+			else
+			{
+				p1move = false;
+				if(!p2move)
+				{
+					p2move = true;
+				}
+				else
+				{
+					p2move = false;
+					if(!p3move)
+					{
+						p3move = true;
+					}
+				}
+			}
+			simulation++;
+			youDied = false;
 		}
 		
-		//if player 1 dies in this scenario, add it to the statistics as a death
-		if (playersTurn == 1) {
-			WinsVsLosses.add(false);
-		}
-		else {
-			WinsVsLosses.add(true);
-		}
+		
 
-		double winRate = winPercentageCalculator(WinsVsLosses);
-		System.out.println("Player 1's winrate is: " + winRate);
 		
 	}
 
