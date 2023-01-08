@@ -10,10 +10,10 @@ public class Main {
 
 	//Global Variables
 	static int numFruits  = 11;
-	static int numPlayers = 3;
+	static int numPlayers = 4;
 
-	static int[]    threePlayerBestMove           = new int[] 	 { 0, 	1, 		1, 		2, 		2, 		1, 		1, 		2, 		2, 		0, 		0,		0};
-	static double[] threePlayerBestMovePercentage = new double[] { 0,  100,   100, 	  100, 	   50, 	   75, 	  100, 	  100, 	  100, 		0, 		0, 		0};
+	static int[]    fourPlayerBestMove           = new int[] 	 { 0, 	1, 		2, 		1, 		2, 		2, 		1, 		1, 		1, 		2, 		2,		2};
+	static double[] fourPlayerBestMovePercentage = new double[] { 0,  100,   100, 	  100, 	   100,    75, 	   50, 	 87.5, 	  100, 	  100, 96.875, 84.375};
 
 	public static void main(String[] args) 
 	{
@@ -34,10 +34,10 @@ public class Main {
 
 		//if pmove = false, that player takes 1 fruit
 		//if pmove = true, that player takes 2 fruits
-		boolean p1move = false, p2move = false, p3move = false;
+		boolean p1move = false, p2move = false, p3move = false, p4move = false;
 
-		//Simulate through 8 different game variations
-		while(simulation < 8)
+		//Simulate through 16 different game variations
+		while(simulation < 16)
 		{
 			//make sure it starts with player 1 in every game
 			playersTurn = 1;
@@ -48,7 +48,7 @@ public class Main {
 			//        Debug Display
 			//*****************************//
 			int display = simulation + 1;
-			int p1moveINT, p2moveINT, p3moveINT;
+			int p1moveINT, p2moveINT, p3moveINT, p4moveINT;
 
 			if (!p1move) p1moveINT = 1;
 			else p1moveINT = 2;
@@ -56,9 +56,11 @@ public class Main {
 			else p2moveINT = 2;
 			if (!p3move) p3moveINT = 1;
 			else p3moveINT = 2;
+			if (!p4move) p4moveINT = 1;
+			else p4moveINT = 2;
 
 			System.out.println("**********************************************");
-			System.out.println("Simulation #" + display + "   p1: " + p1moveINT + "  |  p2: " + p2moveINT + "  |  p3: " + p3moveINT);
+			System.out.println("Simulation #" + display + "   p1: " + p1moveINT + "  |  p2: " + p2moveINT + "  |  p3: " + p3moveINT + "  |  p4: " + p4moveINT);
 			System.out.println("**********************************************");
 			System.out.println();
 			//*****************************//
@@ -100,10 +102,10 @@ public class Main {
 					else {
 						int numFruitsLeft = mySeq.fruitsLeft();
 						//System.out.println(numFruitsLeft + " fruits left");
-						System.out.println("Best Move: " + threePlayerBestMove[numFruitsLeft] + "  |  Percentage: " + threePlayerBestMovePercentage[numFruitsLeft]);
+						System.out.println("Best Move: " + fourPlayerBestMove[numFruitsLeft] + "  |  Percentage: " + fourPlayerBestMovePercentage[numFruitsLeft]);
 
-						if (threePlayerBestMovePercentage[numFruitsLeft] == 100) {
-							int numFruitsPlayerOneShouldTake = threePlayerBestMove[numFruitsLeft];
+						if (fourPlayerBestMovePercentage[numFruitsLeft] == 100) {
+							int numFruitsPlayerOneShouldTake = fourPlayerBestMove[numFruitsLeft];
 
 							System.out.println("Doing Player 1's best move with 100% success.");
 							if (numFruitsPlayerOneShouldTake == 1) {
@@ -121,9 +123,9 @@ public class Main {
 						} 
 						else {
 
-							int numFruitsPlayerOneShouldTake = threePlayerBestMove[numFruitsLeft];
+							int numFruitsPlayerOneShouldTake = fourPlayerBestMove[numFruitsLeft];
 
-							System.out.println("Doing Player 1's best move with " + threePlayerBestMovePercentage[numFruitsLeft] + "% success.");
+							System.out.println("Doing Player 1's best move with " + fourPlayerBestMovePercentage[numFruitsLeft] + "% success.");
 							if (numFruitsPlayerOneShouldTake == 1) {
 								youDied = false;
 								printMove(youDied, playersTurn, 1);
@@ -172,6 +174,21 @@ public class Main {
 					}
 					break;
 				}	
+				
+				case 4:
+				{
+					if(!p4move || mySeq.getSize() <= 2){
+						youDied = mySeq.take1();
+						printMove(youDied, playersTurn, 1);
+						mySeq.print();
+					}	
+					else {
+						youDied = mySeq.take2();
+						printMove(youDied, playersTurn, 2);
+						mySeq.print();
+					}
+					break;
+				}
 				}
 
 				//only change turns if no-one has died yet
@@ -208,11 +225,11 @@ public class Main {
 			else if (endGameEarly) {
 				int numFruitsLeft = mySeq.fruitsLeft();
 				if (!p1move) {
-					oneFruitWinsVsLosses.add( (threePlayerBestMovePercentage[numFruitsLeft] / 100));
+					oneFruitWinsVsLosses.add( (fourPlayerBestMovePercentage[numFruitsLeft] / 100));
 					
 				}
 				else {
-					twoFruitsWinsVsLosses.add( (threePlayerBestMovePercentage[numFruitsLeft] / 100));
+					twoFruitsWinsVsLosses.add( (fourPlayerBestMovePercentage[numFruitsLeft] / 100));
 				}
 			}
 
@@ -239,6 +256,14 @@ public class Main {
 					if(!p3move)
 					{
 						p3move = true;
+					}
+					else
+					{
+						p3move = false;
+						if(!p4move)
+						{
+							p4move = true;
+						}
 					}
 				}
 			}
