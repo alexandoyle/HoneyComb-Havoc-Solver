@@ -4,7 +4,7 @@ import java.util.List;
 /*
  * Created by Alex Estevan & Michael Goolsbey
  * This program simulates games of Honeycomb Havoc
- * to determine the best possible move in any scenario
+ * to determine the best possible move in any scenario (test)
  */
 public class Main {
 
